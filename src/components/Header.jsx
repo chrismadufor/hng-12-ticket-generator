@@ -8,7 +8,7 @@ export default function Header() {
       <div className="flex items-center justify-between h-[68px] md:h-[76px] px-4 border border-strokeColor rounded-[12px] md:rounded-[24px] bg-primary bg-opacity-40">
         {/* logo */}
         <div className="relative aspect-[93/36] h-9">
-          <Image fill src={"/logo.png"} className="" alt="logo" />
+          <Image fill src={"/logo.svg"} className="" alt="logo" />
         </div>
         {/* links */}
         <div className="hidden md:flex items-center gap-10">
