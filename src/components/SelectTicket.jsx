@@ -1,5 +1,6 @@
 "use client";
 
+import { goToTop } from "@/utils/utils";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -48,9 +49,14 @@ export default function SelectTicket({ changePage }) {
 
   const selectNumber = (id) => {
     console.log(id);
-    // setShowOptions(false);
-    setSelectedNumber(id);
+      setSelectedNumber(id);
   };
+
+  const reset = () => {
+    setSelectedNumber(1)
+    setSelectedTicket(1)
+    goToTop()
+  }
 
   useEffect(() => {
     const ticketData = JSON.parse(localStorage.getItem("tData"));
@@ -172,7 +178,7 @@ export default function SelectTicket({ changePage }) {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
-          <button className="row-start-2 md:row-start-1 h-12 border border border-secondary text-secondary jeju rounded-[8px] hover:border-strokeLight hover:border hover:text-strokeLight">
+          <button onClick={reset} className="row-start-2 md:row-start-1 h-12 border border border-secondary text-secondary jeju rounded-[8px] hover:border-strokeLight hover:border hover:text-strokeLight">
             Cancel
           </button>
           <button

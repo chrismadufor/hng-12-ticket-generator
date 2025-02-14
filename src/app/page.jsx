@@ -4,6 +4,7 @@ import AttendeeDetails from "@/components/AttendeeDetails";
 import Header from "@/components/Header";
 import SelectTicket from "@/components/SelectTicket";
 import TicketReady from "@/components/TicketReady";
+import { goToTop } from "@/utils/utils";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -14,13 +15,6 @@ export default function Home() {
     localStorage.setItem("tDataTab", tab)
     setTab(tab);
     goToTop();
-  };
-
-  const goToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   };
 
   useEffect(() => {
