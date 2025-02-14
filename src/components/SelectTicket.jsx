@@ -135,13 +135,13 @@ export default function SelectTicket({ changePage }) {
               </div>
             )}
           </div>
-          <div className="">
+          <div className="relative">
             <select
               value={selectedNumber}
               onChange={(e) => selectNumber(e.target.value)}
               name="ticketCount"
               id="count"
-              className="border border-strokeMainTwo px-3 relative h-12 w-full flex items-center bg-transparent border-[none] rounded-[12px] cursor-pointer focus:outline-transparent"
+              className="border border-strokeMainTwo px-3 relative h-12 w-full flex items-center bg-transparent border-[none] rounded-[12px] cursor-pointer focus:outline-transparent appearance-none"
             >
               <option
                 className="hover:bg-secondary text-white bg-primary"
@@ -168,6 +168,7 @@ export default function SelectTicket({ changePage }) {
                 4
               </option>
             </select>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="absolute top-1/2 right-4 w-5 h-5 text-white transform -translate-y-1/2 pointer-events-none"><path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd"></path></svg>
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-6">

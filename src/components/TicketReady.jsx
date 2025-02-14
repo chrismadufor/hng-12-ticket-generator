@@ -103,7 +103,7 @@ export default function TicketReady({ changePage }) {
           </div>
         </div>
       </div>
-      <div className="grid md:grid-cols-2 gap-6 mt-10 px-3">
+      <div className="grid md:grid-cols-2 gap-6 mt-10 px-3 md:px-7 lg:px-0">
         <button
           onClick={reset}
           className="row-start-2 md:row-start-1 h-12 border border border-secondary text-secondary jeju rounded-[8px] hover:text-strokeLight hover:border-strokeLight hover:border"

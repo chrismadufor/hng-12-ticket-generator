@@ -32,7 +32,7 @@ export default function Home() {
     <div>
       <Header />
       <div className={`mt-4 md:mt-10 lg:mt-12 max-w-[700px] mx-auto border border-strokeMain ${Number(tab) !== 3 && "px-6"} py-8 lg:p-12 bg-primary rounded-[24px] md:rounded-[40px] min-h-[400px]`}>
-        <div className={`${Number(tab) === 3 && "px-6 md:px-0"}`}>
+        <div className={`${Number(tab) === 3 && "px-6 lg:px-0"}`}>
           <div className="flex gap-4 items-center justify-between">
             <h1 className="jeju text-2xl md:text-[32px]">
               {Number(tab) === 1 && "Ticket Selection"}
