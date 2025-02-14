@@ -8,10 +8,10 @@ import Image from "next/image";
 import Spinner from "./Spinner";
 
 export default function AttendeeDetails({ changePage }) {
-  const ticketData = JSON.parse(localStorage.getItem("tData"));
+  const [ticketData, setTicketData] = useState(null)
   const [loading, setLoading] = useState(false);
 
-  const [fileURL, setFileURL] = useState(ticketData.avatar);
+  const [fileURL, setFileURL] = useState("");
   const [file, setFile] = useState(null);
 
   const getPath = (file) => {
@@ -52,7 +52,9 @@ export default function AttendeeDetails({ changePage }) {
   });
 
   useEffect(() => {
-    console.log("In the two");
+    const ticketData = JSON.parse(localStorage.getItem("tData"));
+    setTicketData(ticketData)
+    setFileURL(ticketData?.avatar)
   }, []);
   return (
     <div className="md:p-6 md:bg-primaryTwo md:w-full mt-8 md:border border-strokeMain md:rounded-[32px]">
@@ -67,9 +69,9 @@ export default function AttendeeDetails({ changePage }) {
       <section>
         <Formik
           initialValues={{
-            name: ticketData.name || "",
-            email: ticketData.email || "",
-            request: ticketData.request || "",
+            name: ticketData?.name || "",
+            email: ticketData?.email || "",
+            request: ticketData?.request || "",
           }}
           validationSchema={Yup.object({
             name: Yup.string().required("Name is required"),

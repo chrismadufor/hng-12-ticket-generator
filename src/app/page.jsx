@@ -4,11 +4,10 @@ import AttendeeDetails from "@/components/AttendeeDetails";
 import Header from "@/components/Header";
 import SelectTicket from "@/components/SelectTicket";
 import TicketReady from "@/components/TicketReady";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  let currentTab = Number(localStorage.getItem("tDataTab"))
-  const [tab, setTab] = useState(currentTab || 1);
+  const [tab, setTab] = useState(1);
   const barWidth = `${Math.round((tab / 3) * 100)}${"%"}`;
 
   const changePage = (tab) => {
@@ -23,6 +22,11 @@ export default function Home() {
       behavior: "smooth",
     });
   };
+
+  useEffect(() => {
+    let currentTab = Number(localStorage.getItem("tDataTab"))
+    setTab(currentTab || 1)
+  }, [])
 
   return (
     <div>

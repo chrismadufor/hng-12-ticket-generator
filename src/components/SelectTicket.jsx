@@ -1,17 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function SelectTicket({ changePage }) {
-  const ticketData = JSON.parse(localStorage.getItem("tData"));
-  const [selectedNumber, setSelectedNumber] = useState(
-    ticketData?.ticketCount || 1
-  );
+  const [ticketData, setTicketData] = useState(null);
+  const [selectedNumber, setSelectedNumber] = useState(1);
   const [showOptions, setShowOptions] = useState(false);
-  const [selectedTicket, setSelectedTicket] = useState(
-    ticketData?.ticket?.id || 1
-  );
+  const [selectedTicket, setSelectedTicket] = useState(1);
 
   const saveTicket = () => {
     const data = {
@@ -51,9 +47,17 @@ export default function SelectTicket({ changePage }) {
   };
 
   const selectNumber = (id) => {
-    setShowOptions(false);
+    console.log(id);
+    // setShowOptions(false);
     setSelectedNumber(id);
   };
+
+  useEffect(() => {
+    const ticketData = JSON.parse(localStorage.getItem("tData"));
+    setTicketData(ticketData);
+    setSelectedTicket(ticketData?.ticket?.id || 1);
+    setSelectedNumber(ticketData?.ticketCount || 1);
+  }, []);
 
   return (
     <div className="md:p-6 md:bg-primaryTwo md:w-full mt-8 md:border border-strokeMain md:rounded-[32px]">
@@ -77,7 +81,7 @@ export default function SelectTicket({ changePage }) {
       <section className="flex flex-col gap-10">
         <div>
           <p className="mb-3">Select Ticket Type:</p>
-          <div className="border-strokeMainTwo md:border md:bg-primaryThree md:rounded-[24px] md:p-3 grid md:grid-cols-3 gap-6">
+          <div className="border-strokeMainTwo md:border md:bg-primaryThree md:rounded-[24px] md:p-3 grid md:grid-cols-3 gap-5">
             {tickets.map((item, index) => (
               <button
                 onClick={() => selectTicket(index + 1)}
@@ -133,14 +137,36 @@ export default function SelectTicket({ changePage }) {
           </div>
           <div className="">
             <select
+              value={selectedNumber}
+              onChange={(e) => selectNumber(e.target.value)}
               name="ticketCount"
               id="count"
               className="border border-strokeMainTwo px-3 relative h-12 w-full flex items-center bg-transparent border-[none] rounded-[12px] cursor-pointer focus:outline-transparent"
             >
-              <option className="hover:bg-secondary text-white bg-primary" value="1">1</option>
-              <option className="hover:bg-secondary text-white bg-primary" value="2">2</option>
-              <option className="hover:bg-secondary text-white bg-primary" value="3">3</option>
-              <option className="hover:bg-secondary text-white bg-primary" value="4">4</option>
+              <option
+                className="hover:bg-secondary text-white bg-primary"
+                value="1"
+              >
+                1
+              </option>
+              <option
+                className="hover:bg-secondary text-white bg-primary"
+                value="2"
+              >
+                2
+              </option>
+              <option
+                className="hover:bg-secondary text-white bg-primary"
+                value="3"
+              >
+                3
+              </option>
+              <option
+                className="hover:bg-secondary text-white bg-primary"
+                value="4"
+              >
+                4
+              </option>
             </select>
           </div>
         </div>

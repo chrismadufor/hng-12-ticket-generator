@@ -1,25 +1,33 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function TicketReady({changePage}) {
-  const ticketData = JSON.parse(localStorage.getItem("tData"));
+export default function TicketReady({ changePage }) {
   const formatEmail = (str) => {
-    if (str.length <= 19) return str
-    else return str.split("@").join(" @")
-  }
+    if (str?.length <= 19) return str;
+    else return str?.split("@").join(" @");
+  };
 
   const reset = () => {
-    localStorage.removeItem("tData")
-    changePage(1)
-  }
+    localStorage.removeItem("tData");
+    changePage(1);
+  };
 
   const downloadTicket = () => {
-    alert("Yo yo yo! I'm kidding! 😂🤣")
-  }
+    alert("Yo yo yo! I'm kidding! 😂🤣");
+  };
+
+  const [ticketData, setTicketData] = useState(null);
+
+  useEffect(() => {
+    const ticketData = JSON.parse(localStorage.getItem("tData"));
+    setTicketData(ticketData);
+  }, []);
   return (
     <div className="mt-8">
       <div className="text-center">
-        <h1 className="text-2xl md:text-[32px] atlasi mb-4 md:mb-6">Your Ticket is Booked!</h1>
+        <h1 className="text-2xl md:text-[32px] atlasi mb-4 md:mb-6">
+          Your Ticket is Booked!
+        </h1>
         <p>
           Check your email for a copy or you can <b>download</b>
         </p>
@@ -35,7 +43,7 @@ export default function TicketReady({changePage}) {
             <div className="relative w-[140px] h-[140px] rounded-[12px] border-[4px] border-secondary overflow-hidden">
               <div className="absolute top-0 left-0 h-[140px] aspect-square ">
                 <Image
-                  src={ticketData.avatar}
+                  src={ticketData?.avatar}
                   fill
                   className="object-cover object-top"
                   alt="upload"
@@ -50,7 +58,7 @@ export default function TicketReady({changePage}) {
                   Enter your name
                 </p>
                 <p className="font-semibold text-[11px] whitespace-normal">
-                  {ticketData.name}
+                  {ticketData?.name}
                 </p>
               </div>
               <div className="p-1 border-b border-l pl-2 border-strokeMainThree">
@@ -58,7 +66,7 @@ export default function TicketReady({changePage}) {
                   Enter your email *
                 </p>
                 <p className="font-semibold text-[11px] whitespace-normal">
-                 {formatEmail(ticketData.email)}
+                  {formatEmail(ticketData?.email)}
                 </p>
               </div>
               {/* Below */}
@@ -67,7 +75,7 @@ export default function TicketReady({changePage}) {
                   Ticket Type:
                 </p>
                 <p className="text-[11px] whitespace-normal">
-                  {ticketData.ticket.access}
+                  {ticketData?.ticket.access}
                 </p>
               </div>
               <div className="p-1 border-b border-l pl-2 border-strokeMainThree">
@@ -75,7 +83,7 @@ export default function TicketReady({changePage}) {
                   Ticket for:
                 </p>
                 <p className="text-[11px] whitespace-normal">
-                  {ticketData.ticketCount}
+                  {ticketData?.ticketCount}
                 </p>
               </div>
             </div>
@@ -84,7 +92,7 @@ export default function TicketReady({changePage}) {
                 Special Request?
               </p>
               <p className="text-[10px] whitespace-normal">
-                {ticketData.request ? ticketData.request : "None"}
+                {ticketData?.request ? ticketData?.request : "None"}
               </p>
             </div>
           </div>
@@ -96,7 +104,10 @@ export default function TicketReady({changePage}) {
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-6 mt-10 px-3">
-        <button onClick={reset} className="row-start-2 md:row-start-1 h-12 border border border-secondary text-secondary jeju rounded-[8px] hover:text-strokeLight hover:border-strokeLight hover:border">
+        <button
+          onClick={reset}
+          className="row-start-2 md:row-start-1 h-12 border border border-secondary text-secondary jeju rounded-[8px] hover:text-strokeLight hover:border-strokeLight hover:border"
+        >
           Book Another Ticket
         </button>
         <button
