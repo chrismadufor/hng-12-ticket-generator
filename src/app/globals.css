@@ -1,21 +1,76 @@
+@import url("https://db.onlinewebfonts.com/c/1a5c2d8bbd4e28d99a6efcbb9a5b378f?family=JejuMyeongjo");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alatsi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Road+Rage&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0a0c11;
+  font-family: "Roboto";
+  color: white;
+}
+
+header {
+  font-family: "JejuMyeongjo";
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+/* Font families */
+.jeju {
+  font-family: "JejuMyeongjo";
+}
+.atlasi {
+  font-family: "Atlasi";
+}
+.road_rage {
+  font-family: "Road Rage";
+}
+
+.header-btn .button-hover {
+  display: none;
+}
+
+.header-btn .button-normal {
+  display: block;
+}
+
+.header-btn:hover .button-normal {
+  display: none !important;
+}
+
+.header-btn:hover .button-hover {
+  display: block !important;
+}
+
+.img_overlay {
+  display: none !important;
+}
+
+.dropzone-div:hover .img_overlay {
+  display: flex !important;
+}
+
+/* Gradients */
+.main_bg {
+  background: radial-gradient(52.52% 32.71% at 50% 97.66%, #24a0b533, #24a0b500),
+    #02191d;
+}
+
+.event_info {
+  background: linear-gradient(0deg, #0a0c111a, #0a0c111a),
+    radial-gradient(103.64% 57.39% at 14.02% 32.06%, #24a0b533, #24a0b500);
+}
+
+.ticket_wrap {
+  background-image: url("/ticket-wrap.svg");
+  background-size: auto;
+  background-repeat: no-repeat;
 }

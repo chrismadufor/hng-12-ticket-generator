@@ -8,8 +8,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        strokeColor: "#197686",
+        strokeMain: "#0E464F",
+        strokeMainTwo: "#07373F",
+        strokeMainThree: "#133D44",
+        strokeLight: "#D9D9D9",
+        darkText: "#0A0C11",
+        inactiveText: "#B3B3B3",
+        primary: "#041E23",
+        primaryTwo: "#08252B",
+        primaryThree: "#08343C",
+        primaryThree: "#052228",
+        secondary: "#24A0B5",
+        hoverBg: "#2C545B",
+        selectedBg: "#12464E"
       },
     },
   },
